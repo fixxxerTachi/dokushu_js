@@ -1,0 +1,10 @@
+<!doctype html><html lang='ja'><head><meta charset='utf-8'></head><body>
+<div id='output'></div>
+<script>
+var arg=JSON.parse(location.hash.substring(1));
+var hash=location.hash;
+document.getElementById('output').innerText='幅:' + arg.width + ' 高さ:' + arg.height;
+console.log(hash); //=>#{"width":"200","height":"802"}
+console.log(location.hash.substring(1));
+</script>
+</body></html>

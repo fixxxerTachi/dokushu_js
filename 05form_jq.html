@@ -1,0 +1,72 @@
+<!doctype html><html lang='ja'><head><meta charset='utf-8'>
+<script src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
+</head><body>
+<form>
+<input type='radio' name='lang' id='java' value='java'><label for='java'>Java</label>
+<input type='radio' name='lang' id='js' value='javascript'><label for='js'>Javascript</label>
+<input type='button' id='button' value='click'>
+</form>
+<div id='message'></div>
+<div id='message1'></div>
+<form>
+<input type='checkbox' name='lang1' id='java1' value='java'><label for='java'>Java</label>
+<input type='checkbox' name='lang1' id='js1' value='javascript'><label for='js'>Javascript</label>
+<input type='button' id='button1' value='click'>
+</form>
+<div id='message2'></div>
+<script>
+$(function(){
+	////prop()でcheckedプロパティを設置する
+	//$('#java').prop('checked',true);
+	////val()で設置(配列で指定することに注意)
+	$('input[name=lang]').val(['javascript']);
+
+	////prop()でcheckedプロパティを取得する
+	$('#button').click(function(){
+		if($('#java').prop('checked')){
+			$('#message').text('java is checked');
+		}
+		if($('#js').prop('checked')){
+			$('#message').text('javascript is checked');
+		}
+
+		//:checkedセレクタで取得
+		var selected=$('input[name=lang]:checked').val();
+		$('#message1').text(selected + '  is checked');
+	});
+});
+$(function(){
+	//val()でチェックを設置
+	$('input[name=lang1]').val(['java','javascript']);
+
+	$('#button1').click(function(){
+		var message=' ';
+		if($('#java1').prop('checked')){
+			message=message + 'java is checked';
+		}
+		if($('#js1').prop('checked')){
+			message=message + 'javascrpt is checked';
+		}
+		$('#message2').text(message);
+	});
+});
+</script>
+<form>
+<select name='platform' id='platform'>
+<option value='windows'>Windows</option>
+<option value='mac'>Mac</option>
+<option value='linux'>Linux</option>
+</select>
+<input type='button' id='button2' value='click'>
+</form>
+<div id='message3'></div>
+<script>
+//値を設置
+$(function(){
+	$('#platform').val('linux');
+	$('#button2').on('click',function(){
+		$('#message3').text($('#platform').val());
+	});
+});
+</script>
+</body></html>
